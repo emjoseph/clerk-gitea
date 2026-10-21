@@ -7,3 +7,5 @@ Fern Clerk Growth prototype (FERN-41) — **Gitea docs baseline**, pinned to **T
 - Leak-free baseline: post-Sep-15 features are intentionally absent — those are the gaps Clerk fills on replay.
 
 Published to `gitea.docs.dev.buildwithfern.com` (org `clerk-prototype`, dev).
+
+<!-- build trigger: baseline publish 2026-10-20 -->
