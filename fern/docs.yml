@@ -1,0 +1,253 @@
+instances:
+  - url: gitea.docs.dev.buildwithfern.com
+
+title: Gitea
+
+logo:
+  light: ./assets/logo.svg
+  dark: ./assets/logo.svg
+  href: https://gitea.com
+favicon: ./assets/logo.svg
+
+colors:
+  accent-primary:
+    light: "#4C8F2F"
+    dark: "#87AB63"
+  background:
+    light: "#FFFFFF"
+    dark: "#16181D"
+
+navbar-links:
+  - type: minimal
+    text: Community
+    href: https://gitea.com
+  - type: filled
+    text: Sign In
+    href: https://gitea.com/user/login
+
+tabs:
+  documentation:
+    display-name: Documentation
+    icon: book
+  api:
+    display-name: API Reference
+    icon: code
+
+navigation:
+  - tab: documentation
+    layout:
+      - page: What is Gitea?
+        path: ./pages/index.mdx
+      - section: Help
+        contents:
+          - page: FAQ
+            path: ./pages/help/faq.mdx
+          - page: Support Options
+            path: ./pages/help/support.mdx
+      - section: Installation
+        contents:
+          - page: Compared to other Git hosting
+            path: ./pages/installation/comparison.mdx
+          - page: Database Preparation
+            path: ./pages/installation/database-preparation.mdx
+          - page: Installation from binary
+            path: ./pages/installation/from-binary.mdx
+          - page: Installation from Package
+            path: ./pages/installation/from-package.mdx
+          - page: Installation from source
+            path: ./pages/installation/from-source.mdx
+          - page: Run as a Linux service
+            path: ./pages/installation/run-as-service-in-ubuntu.mdx
+          - page: Register as a Windows service
+            path: ./pages/installation/windows-service.mdx
+          - page: Installation with Docker (rootless)
+            path: ./pages/installation/with-docker-rootless.mdx
+          - page: Installation with Docker
+            path: ./pages/installation/with-docker.mdx
+          - page: Install on Kubernetes
+            path: ./pages/installation/on-kubernetes.mdx
+          - page: Installation on Cloud Provider
+            path: ./pages/installation/on-cloud-provider.mdx
+          - page: Upgrade from an old Gitea
+            path: ./pages/installation/upgrade-from-gitea.mdx
+      - section: Administration
+        contents:
+          - page: Gitea Command Line
+            path: ./pages/administration/command-line.mdx
+          - page: Authentication
+            path: ./pages/administration/authentication.mdx
+          - page: Environment variables
+            path: ./pages/administration/environment-variables.mdx
+          - page: Backup and Restore
+            path: ./pages/administration/backup-and-restore.mdx
+          - page: Email setup
+            path: ./pages/administration/email-setup.mdx
+          - page: Git LFS setup
+            path: ./pages/administration/git-lfs-support.mdx
+          - page: HTTPS Setup
+            path: ./pages/administration/https-support.mdx
+          - page: Fail2ban Setup
+            path: ./pages/administration/fail2ban-setup.mdx
+          - page: Reverse Proxies
+            path: ./pages/administration/reverse-proxies.mdx
+          - page: Embedded data extraction tool
+            path: ./pages/administration/cmd-embedded.mdx
+          - page: Configuration Cheat Sheet
+            path: ./pages/administration/config-cheat-sheet.mdx
+          - page: Logging Configuration
+            path: ./pages/administration/logging-config.mdx
+          - page: Mail templates
+            path: ./pages/administration/mail-templates.mdx
+          - page: Repository indexer
+            path: ./pages/administration/repo-indexer.mdx
+          - page: GPG/SSH Commit Signatures
+            path: ./pages/administration/signing.mdx
+          - page: External renderers
+            path: ./pages/administration/external-renderers.mdx
+          - page: Search Engines Indexation
+            path: ./pages/administration/search-engines-indexation.mdx
+          - page: Customizing Gitea
+            path: ./pages/administration/customizing-gitea.mdx
+          - page: Adding Legal Pages
+            path: ./pages/administration/adding-legal-pages.mdx
+      - section: Usage
+        contents:
+          - section: Repository
+            contents:
+              - page: Markdown
+                path: ./pages/usage/repository/markdown.mdx
+              - page: Blame File View
+                path: ./pages/usage/repository/blame.mdx
+              - page: Push
+                path: ./pages/usage/repository/push.mdx
+              - page: Clone filters (partial clone)
+                path: ./pages/usage/repository/clone-filter.mdx
+              - page: Code Owners
+                path: ./pages/usage/repository/code-owners.mdx
+              - page: Webhooks
+                path: ./pages/usage/repository/webhooks.mdx
+              - page: Migration
+                path: ./pages/usage/repository/migration.mdx
+              - page: Profile READMEs
+                path: ./pages/usage/repository/profile-readme.mdx
+              - page: Template Repository
+                path: ./pages/usage/repository/template-repositories.mdx
+              - page: Mirror Repository
+                path: ./pages/usage/repository/repo-mirror.mdx
+              - page: Incoming Email
+                path: ./pages/usage/repository/incoming-email.mdx
+          - section: "Issues & Pull Requests"
+            contents:
+              - page: AGit
+                path: ./pages/usage/issues-prs/agit.mdx
+              - page: Labels
+                path: ./pages/usage/issues-prs/labels.mdx
+              - page: Pull Request
+                path: ./pages/usage/issues-prs/pull-request.mdx
+              - page: Automatically Linked References
+                path: ./pages/usage/issues-prs/linked-references.mdx
+              - page: Issue and Pull Request Templates
+                path: ./pages/usage/issues-prs/issue-pull-request-templates.mdx
+              - page: Merge Message templates
+                path: ./pages/usage/issues-prs/merge-message-templates.mdx
+          - section: Actions
+            contents:
+              - page: Overview
+                path: ./pages/usage/actions/overview.mdx
+              - page: Quick Start
+                path: ./pages/usage/actions/quickstart.mdx
+              - page: Variables
+                path: ./pages/usage/actions/variables.mdx
+              - page: "Actions job token permissions (`GITEA_TOKEN`)"
+                path: ./pages/usage/actions/token-permissions.mdx
+              - page: Secrets
+                path: ./pages/usage/actions/secrets.mdx
+              - page: Scoped Workflows
+                path: ./pages/usage/actions/scoped-workflows.mdx
+              - page: Badge
+                path: ./pages/usage/actions/badge.mdx
+              - page: Compared to GitHub Actions
+                path: ./pages/usage/actions/comparison.mdx
+              - page: Design of Gitea Actions
+                path: ./pages/usage/actions/design.mdx
+              - page: Frequently Asked Questions
+                path: ./pages/usage/actions/faq.mdx
+          - section: Packages
+            contents:
+              - page: Overview
+                path: ./pages/usage/packages/overview.mdx
+              - page: Storage
+                path: ./pages/usage/packages/storage.mdx
+              - page: Alpine Package Registry
+                path: ./pages/usage/packages/alpine.mdx
+              - page: Arch package registry
+                path: ./pages/usage/packages/arch.mdx
+              - page: Cargo Package Registry
+                path: ./pages/usage/packages/cargo.mdx
+              - page: Chef Package Registry
+                path: ./pages/usage/packages/chef.mdx
+              - page: Composer Package Registry
+                path: ./pages/usage/packages/composer.mdx
+              - page: Conan Package Registry
+                path: ./pages/usage/packages/conan.mdx
+              - page: Conda Package Registry
+                path: ./pages/usage/packages/conda.mdx
+              - page: Container Registry
+                path: ./pages/usage/packages/container.mdx
+              - page: CRAN Package Registry
+                path: ./pages/usage/packages/cran.mdx
+              - page: Debian Package Registry
+                path: ./pages/usage/packages/debian.mdx
+              - page: Go Package Registry
+                path: ./pages/usage/packages/go.mdx
+              - page: Helm Chart Registry
+                path: ./pages/usage/packages/helm.mdx
+              - page: Maven Package Registry
+                path: ./pages/usage/packages/maven.mdx
+              - page: NPM Package Registry
+                path: ./pages/usage/packages/npm.mdx
+              - page: NuGet Package Registry
+                path: ./pages/usage/packages/nuget.mdx
+              - page: Pub Package Registry
+                path: ./pages/usage/packages/pub.mdx
+              - page: PyPI Package Registry
+                path: ./pages/usage/packages/pypi.mdx
+              - page: RPM Package Registry
+                path: ./pages/usage/packages/rpm.mdx
+              - page: RubyGems Package Registry
+                path: ./pages/usage/packages/rubygems.mdx
+              - page: Swift Package Registry
+                path: ./pages/usage/packages/swift.mdx
+              - page: Terraform State Registry
+                path: ./pages/usage/packages/terraform.mdx
+              - page: Vagrant Package Registry
+                path: ./pages/usage/packages/vagrant.mdx
+              - page: Generic Package Registry
+                path: ./pages/usage/packages/generic.mdx
+          - section: Access Control
+            contents:
+              - page: Permissions
+                path: ./pages/usage/access-control/permissions.mdx
+              - page: Blocking a user
+                path: ./pages/usage/access-control/blocking-users.mdx
+              - page: Protected branches
+                path: ./pages/usage/access-control/protected-branches.mdx
+              - page: Protected tags
+                path: ./pages/usage/access-control/protected-tags.mdx
+          - section: User Setting
+            contents:
+              - page: Multi-factor Authentication (MFA)
+                path: ./pages/usage/user-setting/multi-factor-authentication.mdx
+      - section: Development
+        contents:
+          - page: API Usage
+            path: ./pages/development/api-usage.mdx
+          - page: OAuth2 Provider
+            path: ./pages/development/oauth2-provider.mdx
+          - page: Migration Interfaces
+            path: ./pages/development/migrations.mdx
+          - page: Integrations
+            path: ./pages/development/integrations.mdx
+  - tab: api
+    layout:
+      - api: API Reference

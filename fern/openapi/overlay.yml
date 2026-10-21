@@ -1,0 +1,7 @@
+# Overlay: the committed Gitea spec ships template placeholders for server + version.
+# Set a real server so the API Explorer ("Try it") works, and a readable version.
+# This does NOT edit Gitea's original spec — it is merged on top at build time.
+servers:
+  - url: https://gitea.com/api/v1
+info:
+  version: "baseline-2026-09-08"
