@@ -49,13 +49,14 @@ Valid access mode values for each scope are `read`, `write`, and `none`.
 - `wiki`
 - `projects`
 - `packages` (if supported by the target feature)
+- `id-token` — grants the job the ability to request a short-lived OpenID Connect token (see [OIDC workload identity](#oidc-workload-identity) below)
 
 If you specify both `contents` and a more granular scope (like `code` or `releases`), the granular scope wins for that unit.
 
 ### Compatibility notes
 
 Gitea supports a subset of GitHub Actions permission scopes.
-GitHub-only scopes such as `statuses`, `checks`, `deployments`, `id-token`, `security-events`, and `pages` are not currently supported by Gitea Actions.
+GitHub-only scopes such as `statuses`, `checks`, `deployments`, `security-events`, and `pages` are not currently supported by Gitea Actions.
 
 Gitea also exposes repository-unit scopes that do not exist as separate scopes in GitHub Actions:
 
@@ -79,7 +80,7 @@ The job's effective permissions are computed as:
 `effective = min(requested, maximum)`
 
 This means workflows can reduce permissions for a job, but cannot exceed your configured maximum.
-If you don't configure a maximum, the maximum defaults to `write` for all scopes.
+If you don't configure a maximum, the maximum defaults to `write` for all scopes, including `id-token`.
 
 ## Where to configure
 
@@ -109,3 +110,36 @@ Private repositories can also allow selected collaborative owners via **Settings
 This allows the private repositories of those owners to read the current private repository for Actions use, such as private actions and reusable workflows.
 
 Fork pull request workflows never gain cross-repository access to private repositories, even if those repositories are listed.
+
+## OIDC workload identity
+
+Jobs that declare `id-token: write` in their `permissions:` block can request short-lived OpenID Connect (OIDC) tokens to authenticate to external services (cloud providers, secret managers, etc.) without storing long-lived credentials as secrets.
+
+### How it works
+
+When a job is granted `id-token: write`, Gitea sets two internal environment variables:
+
+- `ACTIONS_ID_TOKEN_REQUEST_URL` — the endpoint to call to obtain a token (e.g. `https://your-gitea.example.com/api/actions/oidc/token`)
+- `ACTIONS_ID_TOKEN_REQUEST_TOKEN` — a short-lived bearer token used to authenticate the request
+
+Tools such as `@actions/core` (`getIDToken()`) read these variables automatically, so existing GitHub Actions workflows that use OIDC carry over without modification.
+
+The issued token is a signed JWT (RS256) with claims that match GitHub's format, including `workflow_ref`, `job_workflow_ref`, and an immutable `sub` of the form `repo:owner@<owner_id>/repo@<repo_id>:ref:<ref>` (or `:pull_request` for pull request runs). The issuer is at `{AppURL}api/actions/oidc`, with discovery at `{AppURL}api/actions/oidc/.well-known/openid-configuration` and keys at `{AppURL}api/actions/oidc/jwks`.
+
+### Enabling OIDC
+
+Add `id-token: write` to the job's (or workflow's) `permissions:` block:
+
+```yaml
+permissions:
+  id-token: write
+  contents: read
+```
+
+Or use `write-all` to grant write access to all scopes including `id-token`.
+
+### Restrictions
+
+- **Default permissions**: `id-token` is never granted by default (neither in permissive nor restricted mode). A workflow or job must explicitly request it.
+- **Fork pull requests**: fork pull request workflows never receive an OIDC token, regardless of `permissions:`.
+- **Maximum permissions**: administrators can disable OIDC at the owner or repository level by setting the maximum `id-token` permission to `none` in **Settings → Actions → General**.

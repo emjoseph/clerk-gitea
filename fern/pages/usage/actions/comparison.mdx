@@ -76,7 +76,7 @@ Services steps don't have their own section in the job log user interface.
 Gitea supports `permissions` and `jobs.<job_id>.permissions` to control the default `GITEA_TOKEN` permissions.
 
 The effective permissions are clamped by the repository/owner settings and are further restricted for fork pull requests and cross-repository access.
-GitHub-only scopes such as `statuses`, `checks`, `deployments`, `id-token`, `security-events`, and `pages` are not supported, while Gitea-specific scopes such as `code`, `releases`, `wiki`, and `projects` are available.
+GitHub-only scopes such as `statuses`, `checks`, `deployments`, `security-events`, and `pages` are not supported, while Gitea-specific scopes such as `code`, `releases`, `wiki`, and `projects` are available. The `id-token` scope is supported: jobs declaring `id-token: write` can request short-lived OIDC tokens (see [Actions job token permissions](token-permissions.md)).
 
 See [Actions job token permissions](token-permissions.md).
 
