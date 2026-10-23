@@ -473,6 +473,13 @@ REACTIONS = +1, -1, laugh, confused, heart, hooray, eyes
 
 A full list of supported emoji's is at [emoji list](https://gitea.com/gitea/gitea.com/issues/8)
 
+To configure reactions specifically for releases (drafts and tags cannot be reacted to), use `RELEASE_REACTIONS`:
+
+```ini title="app.ini"
+[ui]
+RELEASE_REACTIONS = +1, laugh, hooray, heart, rocket, eyes
+```
+
 ## Customizing the look of Gitea
 
 The built-in themes are `gitea-light`, `gitea-dark`, and `gitea-auto` (which automatically adapts to OS settings).
