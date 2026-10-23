@@ -65,7 +65,7 @@ When any of the granular scopes known from Personal Access Tokens is introduced,
 
 > **NOTE:** If third party adds any scope other than the OIDC ones: `openid`, `email`, `profile`, and `groups` or the ones found already in Personal Access Token the scope will fallback to full access as it was the case before v1.23
 
-The approval page displayed to the user shows the list of scopes requested by the third party. Once approved, this decision is remembered. If the third party changes its requested scopes in future requests, the entire flow will fail, requiring re-authorization.
+The approval page displayed to the user shows the list of scopes requested by the third party. Once approved, this decision is remembered. If the third party changes its requested scopes in future requests, the consent page is shown again listing the newly added scopes. Approving the new scope set updates the existing grant; issued tokens reflect the new scope immediately. If the third party omits the `scope` parameter entirely, the existing grant's scope is reused.
 
 ## Endpoints
 
