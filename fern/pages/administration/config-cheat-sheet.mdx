@@ -939,6 +939,12 @@ In-Reply-To =
 - `ITEM_TTL`: **8760h**: Time to keep items in cache if not used, Setting it to -1 disables caching.
 - `COMMITS_COUNT`: **1000**: Only enable the cache when repository's commits count great than.
 
+## Redis (`redis`)
+
+New in Gitea 28.0.0. A shared Redis connection used as the default for every Redis-backed subsystem (cache, session, queue, global lock, etc.).
+
+- `CONN_STR`: **_empty_**: Shared Redis connection string, for example `redis://127.0.0.1:6379/0` or `redis+cluster://127.0.0.1:6379/0` for a Redis cluster. Used by any Redis-backed subsystem whose own connection setting is left empty. A connection string set in an individual section (such as `[cache]` `HOST`, `[session]` `PROVIDER_CONFIG`, or `[queue]` `CONN_STR`) always takes precedence. When left empty, each subsystem keeps its own configuration.
+
 ## Session (`session`)
 
 - `PROVIDER`: **memory**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
@@ -1715,6 +1721,7 @@ PROXY_HOSTS = *.github.com
   And for object storage services like S3, which is billed for requests, it would cause extra 2 times of get requests for each log view.
   But it will save storage space and network bandwidth, so it's still recommended to use compression.
 - `ARTIFACT_RETENTION_DAYS`: **90**: Default number of days to keep artifacts. Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+- `RUN_RETENTION_DAYS`: **400**: Number of days to keep completed action runs. Older runs and everything under them are deleted by the `cleanup_action_runs` cron task. Set to 0 to keep runs forever. New in Gitea 28.0.0.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time
 - `ENDLESS_TASK_TIMEOUT`: **3h**: Timeout to stop the tasks which have running status and continuous updates, but don't end for a long time
 - `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which have waiting status, but haven't been picked by a runner for a long time
