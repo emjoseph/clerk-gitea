@@ -1715,6 +1715,7 @@ PROXY_HOSTS = *.github.com
   And for object storage services like S3, which is billed for requests, it would cause extra 2 times of get requests for each log view.
   But it will save storage space and network bandwidth, so it's still recommended to use compression.
 - `ARTIFACT_RETENTION_DAYS`: **90**: Default number of days to keep artifacts. Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+- `ARTIFACT_PREVIEW_MAX_SIZE`: **10485760** (10 MiB): Maximum total artifact size in bytes that can be browsed or previewed in the web UI. Set to `0` to disable artifact previews entirely, or `-1` for no limit. Individual files also respect `[ui] MAX_DISPLAY_FILE_SIZE`.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time
 - `ENDLESS_TASK_TIMEOUT`: **3h**: Timeout to stop the tasks which have running status and continuous updates, but don't end for a long time
 - `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which have waiting status, but haven't been picked by a runner for a long time
