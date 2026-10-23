@@ -97,6 +97,14 @@ Admin operations:
       - Examples:
         - `gitea admin user generate-access-token --username myname --token-name mytoken`
         - `gitea admin user generate-access-token --help`
+    - `disable-2fa`:
+      - Description: Disables two-factor authentication for the specified user. New in Gitea 28.0.0.
+      - Options:
+        - `--username value`, `-u value`: Username of the user.
+        - `--id value`: ID of the user.
+        - One of `--id` or `--username` is required. If both are provided then they have to match.
+      - Examples:
+        - `gitea admin user disable-2fa --username myname`
   - `regenerate`
     - Options:
       - `hooks`: Regenerate Git Hooks for all repositories
