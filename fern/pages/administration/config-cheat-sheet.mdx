@@ -168,11 +168,11 @@ This maybe harmful to your website if you do not give it a right value.
  a related issue
 - `DEFAULT_MERGE_STYLE`: **merge**: Set default merge style for repository creating, valid options: `merge`, `rebase`, `rebase-merge`, `squash`, `fast-forward-only`
 - `DEFAULT_MERGE_MESSAGE_COMMITS_LIMIT`: **50**: In the default merge message for squash commits include at most this many commits. Set to `-1` to include all commits
-- `DEFAULT_MERGE_MESSAGE_SIZE`: **5120**: In the default merge message for squash commits limit the size of the commit messages. Set to `-1` to have no limit. Only used if `POPULATE_SQUASH_COMMENT_WITH_COMMIT_MESSAGES` is `true`.
+- `DEFAULT_MERGE_MESSAGE_SIZE`: **5120**: In the default merge message for squash commits limit the size of the commit messages. Set to `-1` to have no limit. Only used if `DEFAULT_SQUASH_MERGE_MESSAGE` is `COMMIT_MESSAGES`.
 - `DEFAULT_MERGE_MESSAGE_ALL_AUTHORS`: **false**: In the default merge message for squash commits walk all commits to include all authors in the Co-authored-by otherwise just use those in the limited list
 - `DEFAULT_MERGE_MESSAGE_MAX_APPROVERS`: **10**: In default merge messages limit the number of approvers listed as `Reviewed-by:`. Set to `-1` to include all.
 - `DEFAULT_MERGE_MESSAGE_OFFICIAL_APPROVERS_ONLY`: **true**: In default merge messages only include approvers who are officially allowed to review.
-- `POPULATE_SQUASH_COMMENT_WITH_COMMIT_MESSAGES`: **false**: In default squash-merge messages include the commit message of all commits comprising the pull request.
+- `DEFAULT_SQUASH_MERGE_MESSAGE`: **PR_BODY**: Set the default squash merge commit message body for new repositories. Valid options: `PR_BODY` (pull request description), `COMMIT_MESSAGES` (commit messages from all commits), `BLANK` (empty body). Repositories store the current value when created or when their settings are next saved, and can change it individually. The old key `POPULATE_SQUASH_COMMENT_WITH_COMMIT_MESSAGES` still works as a deprecated fallback (mapped to `PR_BODY` when false, `COMMIT_MESSAGES` when true).
 - `ADD_CO_COMMITTER_TRAILERS`: **true**: Add co-authored-by and co-committed-by trailers to merge commit messages if committer does not match author.
 - `RETARGET_CHILDREN_ON_MERGE`: **true**: Retarget child pull requests to the parent pull request branch target on merge of parent pull request. It only works on merged PRs where the head and base branch target the same repo.
 - `DEFAULT_DELETE_BRANCH_AFTER_MERGE`: **false**: Set the default value for "Delete pull request branch after merge by default" for new repositories.
