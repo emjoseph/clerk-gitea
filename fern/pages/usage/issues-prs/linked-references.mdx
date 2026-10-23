@@ -106,8 +106,17 @@ conditions must be met:
 In the last case, the issue will be closed or reopened only if the merger
 of the pull request has permissions to do so.
 
-Additionally, only pull requests and commit messages can create an action,
-and only issues can be closed or reopened this way.
+Additionally, only pull requests and commit messages can create an action.
+Issues can be closed or reopened this way; pull requests can be closed this
+way, but not reopened.
+
+<Note>
+
+When a repository uses an external tracker, closing a pull request via a `#N`
+reference is not supported — use the `!N` notation instead to target a pull
+request for closing.
+
+</Note>
 
 The default _keywords_ are:
 
