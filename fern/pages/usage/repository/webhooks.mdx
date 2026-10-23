@@ -589,7 +589,7 @@ This event occurs when a pull request review is submitted with approval.
 | `repository` | `object` | **Required.** The repository containing the pull request. |
 | `sender` | `object` | **Required.** The user who submitted the review. |
 | `commit_id` | `string` | The commit SHA associated with the review event, if applicable. |
-| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `approved`. |
+| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `pull_request_review_approved`. |
 
 #### `pull_request_review_rejected`
 
@@ -610,7 +610,7 @@ request for changes.
 | `repository` | `object` | **Required.** The repository containing the pull request. |
 | `sender` | `object` | **Required.** The user who submitted the review. |
 | `commit_id` | `string` | The commit SHA associated with the review event, if applicable. |
-| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `rejected`. |
+| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `pull_request_review_rejected`. |
 
 #### `pull_request_review_comment`
 
@@ -630,7 +630,7 @@ This event occurs when a pull request review is submitted as a comment.
 | `repository` | `object` | **Required.** The repository containing the pull request. |
 | `sender` | `object` | **Required.** The user who submitted the review. |
 | `commit_id` | `string` | The commit SHA associated with the review event, if applicable. |
-| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `comment`. |
+| `review` | `object` | **Required.** The review payload. For this event, `review.type` is `pull_request_review_comment`. |
 
 #### `pull_request_sync`
 
