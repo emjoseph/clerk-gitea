@@ -403,7 +403,7 @@ You must disable `ui.notification.EVENT_SOURCE_UPDATE_TIME` by setting it to **-
   If it is set to `(DOER_USERNAME)`, it will use current signed-in user's username.
   This option is only for some advanced users who have configured their SSH reverse-proxy and need to use different usernames for git SSH clone.
   Most users should just leave it blank and/or modify the `BUILTIN_SSH_SERVER_USER`.
-- `SSH_DOMAIN`: **`{DOMAIN}`**: Domain name of this server, used for displayed clone URL.
+- `SSH_DOMAIN`: **`{domain part of ROOT_URL}`**: Domain name of this server, used for displayed clone URL.
 - `SSH_PORT`: **22**: SSH port displayed in clone URL. If you need a different "SSH clone port" from the real "SSH listen port", set the SSH_LISTEN_PORT separately.
 - `SSH_LISTEN_HOST`: **0.0.0.0**: Listen address for the built-in SSH server.
 - `SSH_LISTEN_PORT`: **`{SSH_PORT}`**: Port for the built-in SSH server.
@@ -697,7 +697,7 @@ Custom Git Hooks can be used to perform arbitrary code execution on the host ope
 ## OpenID (`openid`)
 
 - `ENABLE_OPENID_SIGNIN`: **true**: Allow authentication in via OpenID.
-- `ENABLE_OPENID_SIGNUP`: **! DISABLE\_REGISTRATION**: Allow registering via OpenID.
+- `ENABLE_OPENID_SIGNUP`: **false**: Allow registering via OpenID.
 - `WHITELISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching
    OpenID URI's to permit.
 - `BLACKLISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching
@@ -732,7 +732,7 @@ Custom Git Hooks can be used to perform arbitrary code execution on the host ope
    Requires `Mailer` to be enabled.
 - `REGISTER_MANUAL_CONFIRM`: **false**: Enable this to manually confirm new registrations.
    Requires `REGISTER_EMAIL_CONFIRM` to be disabled.
-- `DISABLE_REGISTRATION`: **false**: Disable registration, after which only admin can create
+- `DISABLE_REGISTRATION`: **true**: Disable registration, after which only admin can create
    accounts for users.
 - `REQUIRE_EXTERNAL_REGISTRATION_PASSWORD`: **false**: Enable this to force externally created
    accounts (via GitHub, OpenID Connect, etc) to create a password.
@@ -795,7 +795,7 @@ Enabling this will decrease security, so you should only enable it if you know w
 - `DEFAULT_ALLOW_ONLY_CONTRIBUTORS_TO_TRACK_TIME`: **true**: Only allow users with write permissions to track time.
 - `EMAIL_DOMAIN_ALLOWLIST`: **_empty_**: If non-empty, comma separated list of domain names that can only be used to register on this instance, wildcard is supported.
 - `EMAIL_DOMAIN_BLOCKLIST`: **_empty_**: If non-empty, comma separated list of domain names that cannot be used to register on this instance, wildcard is supported.
-- `SHOW_REGISTRATION_BUTTON`: **! DISABLE\_REGISTRATION**: Show Registration Button
+- `SHOW_REGISTRATION_BUTTON`: **true only if both DISABLE_REGISTRATION and ALLOW_ONLY_EXTERNAL_REGISTRATION are false**: Show Registration Button
 - `SHOW_MILESTONES_DASHBOARD_PAGE`: **true** Enable this to show the milestones dashboard page - a view of all the user's milestones
 - `AUTO_WATCH_NEW_REPOS`: **true**: Enable this to let all organisation users watch new repos when they are created
 - `AUTO_WATCH_ON_CHANGES`: **false**: Enable this to make users watch a repository after their first commit to it
@@ -805,7 +805,7 @@ Enabling this will decrease security, so you should only enable it if you know w
 - `DEFAULT_ORG_MEMBER_VISIBLE`: **false** True will make the membership of the users visible when added to the organisation.
 - `ALLOW_ONLY_INTERNAL_REGISTRATION`: **false** Set to true to force registration only via Gitea.
 - `ALLOW_ONLY_EXTERNAL_REGISTRATION`: **false** Set to true to force registration only using third-party services.
-- `NO_REPLY_ADDRESS`: **noreply.DOMAIN** Value for the domain part of the user's email address in the Git log if user has set KeepEmailPrivate to true. DOMAIN resolves to the value in server.DOMAIN.
+- `NO_REPLY_ADDRESS`: **noreply.{domain part of ROOT_URL}** Value for the domain part of the user's email address in the Git log if user has set KeepEmailPrivate to true. Defaults to "noreply." prepended to the domain part of ROOT_URL.
   The user's email will be replaced with a concatenation of the user name in lower case, "@" and NO_REPLY_ADDRESS.
 - `USER_DELETE_WITH_COMMENTS_MAX_TIME`: **0** Minimum amount of time a user must exist before comments are kept when the user is deleted.
 - `VALID_SITE_URL_SCHEMES`: **http, https**: Valid site url schemes for user profiles
@@ -941,7 +941,7 @@ In-Reply-To =
 
 ## Session (`session`)
 
-- `PROVIDER`: **memory**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
+- `PROVIDER`: **file**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
 - `PROVIDER_CONFIG`: **data/sessions**: For file, the root path; for db, empty (database config will be used); for others, the connection string. Relative paths will be made absolute against _`AppWorkPath`_.
 - `COOKIE_SECURE`:**_empty_**: `true` or `false`. Enable this to force using HTTPS for all session access. If not set, it defaults to `true` if the ROOT_URL is an HTTPS URL.
 - `COOKIE_NAME`: **i\_like\_gitea**: The name of the cookie used for the session ID.
