@@ -52,6 +52,20 @@ Force pushes have their own set of options:
 - **Enable force push** allows anyone who can push to also force push.
 - **Allowlist restricted force push** limits force pushes to a separate allowlist (users, teams, and optionally deploy keys) **and** requires the person to already have regular push access.
 
+### Branch deletion
+
+Branch deletion has its own set of options:
+
+- **Disable branch deletion** (default) prevents anyone from deleting the branch, even users with push access.
+- **Enable branch deletion** allows anyone with push access to delete the branch.
+- **Allowlist restricted branch deletion** limits deletion to a separate allowlist (users, teams, and optionally deploy keys) **and** requires the person to already have regular push access.
+
+<Note>
+The repository's default branch and any branch that is the current pull request target cannot be deleted regardless of this setting. Deploy keys must have regular push access to be eligible for the deletion allowlist. `enable_deletion` has no effect unless `enable_push` is also `true`.
+</Note>
+
+The setting is enforced across all surfaces: Git pushes, the API, the web UI, and the **Delete branch** button that appears after a pull request is merged.
+
 ## Pull request merges and approvals
 
 - **Merge allowlist**: keep the default to let anyone with write access merge pull requests, or enable the allowlist to restrict merges to selected users/teams.
