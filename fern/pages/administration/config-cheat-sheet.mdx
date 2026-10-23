@@ -1717,7 +1717,7 @@ PROXY_HOSTS = *.github.com
 - `ARTIFACT_RETENTION_DAYS`: **90**: Default number of days to keep artifacts. Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time
 - `ENDLESS_TASK_TIMEOUT`: **3h**: Timeout to stop the tasks which have running status and continuous updates, but don't end for a long time
-- `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which have waiting status, but haven't been picked by a runner for a long time
+- `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which haven't started and haven't been updated for a long time
 - `SKIP_WORKFLOW_STRINGS`: **[skip ci],[ci skip],[no ci],[skip actions],[actions skip]**: Strings committers can place inside a commit message or PR title to skip executing the corresponding actions workflow
 - `WORKFLOW_DIRS`: **.gitea/workflows,.github/workflows**: Comma-separated list of workflow directories, the first one to exist in a repo is used to find Actions workflow files.
 - `SCOPED_WORKFLOW_DIRS`: **.gitea/scoped_workflows**: Comma-separated list of directories holding [scoped workflows](usage/actions/scoped-workflows.md) (workflows defined in a central source repository that run on other repositories). Must not overlap with `WORKFLOW_DIRS`. Leave empty so no directory is scanned for scoped workflows; none are found or run.
