@@ -130,7 +130,7 @@ The remaining fields are specific to one or a few events:
 | Name | Events | Description | Example |
 |---|---|---|---|
 | `gitea.event.schedule` | `schedule` | The cron expression that triggered the run. | `*/5 * * * *` |
-| `gitea.event.inputs.<name>` | `workflow_dispatch`, `workflow_call` | A raw input value. Prefer `${{ inputs.<name> }}`, which also applies the input's `default`. | `true` |
+| `gitea.event.inputs.<name>` | `workflow_dispatch` | A raw input value. Prefer `${{ inputs.<name> }}`, which also applies the input's `default`. | `true` |
 | `gitea.event.workflow` | `workflow_dispatch` | The file name of the dispatched workflow. | `ci.yaml` |
 | `gitea.event.ref` | `push`, `create`, `delete`, `workflow_dispatch` | The ref of the event. Unlike GitHub, `create` and `delete` use the full ref instead of the short name. | `refs/heads/main` |
 | `gitea.event.ref_type` | `create`, `delete` | The type of ref: `branch` or `tag`. | `tag` |
